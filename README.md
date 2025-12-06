@@ -1,117 +1,281 @@
-Perfect! Let’s turn that roadmap into a structured weekly study plan with exercises so you can follow it step by step.
-📆 12-Week x86 Assembly Language Study Plan
-Weeks 1–2: Foundations
+🧭 Full Roadmap for Learning x86 Assembly Language
+1. Foundations (Prerequisites)
 
-    Topics
+Before learning x86 assembly, make sure you understand:
 
-        Number systems (binary, hex, decimal)
+✅ 1.1 Computer Architecture Basics
 
-        CPU architecture: registers, memory, instruction cycle
+What is a CPU?
 
-        Assembly syntax (NASM/MASM)
+ALU, registers, control unit
 
-    Exercises
+Memory hierarchy (RAM, cache, disk)
 
-        Convert numbers between binary, hex, and decimal
+How instructions execute (fetch-decode-execute cycle)
 
-        Write a “Hello World” in NASM (Linux) or MASM (Windows)
+Endianness (little vs. big)
 
-        Explore registers with simple mov instructions
+✅ 1.2 Number Systems
 
-Weeks 3–4: Basic Programming
+Binary, Hexadecimal
 
-    Topics
+Two’s complement
 
-        Data movement (mov, push, pop)
+Bitwise operations (AND, OR, XOR, shifts)
 
-        Arithmetic (add, sub, mul, div)
+✅ 1.3 Operating System Basics
 
-        Logic (and, or, xor, not)
+Processes, system calls
 
-    Exercises
+User vs Kernel mode
 
-        Implement addition and subtraction of two numbers
+Stack & heap
 
-        Write a program to calculate factorial iteratively
+Milestone: You should understand how data moves through a CPU.
+2. Environment Setup
 
-        Create a bitwise calculator (AND, OR, XOR)
+Choose which environment you will learn:
 
-Weeks 5–6: Control Flow
+Option A — Linux (recommended)
 
-    Topics
+Tools: nasm, ld, gdb
 
-        Conditional jumps (je, jne, jg, jl)
+Editor: VSCode or Vim
 
-        Loops (loop, jmp)
+Install NASM:
+sudo apt install nasm
 
-        Procedures (call, ret)
+Option B — Windows
 
-    Exercises
+MASM (Microsoft Assembler) OR
 
-        Write a program to print numbers 1–10 using loops
+WinASM / Visual Studio MASM
 
-        Implement Fibonacci sequence with recursion
+Option C — Cross-Platform
 
-        Create a simple menu-driven program using jumps
+Use Intel SDE or qemu
 
-Weeks 7–8: System-Level Programming
+Online assemblers: Godbolt (Compiler Explorer)
 
-    Topics
+Milestone: You can assemble, link, and run a simple “Hello World”.
+3. x86 Architecture Essentials
+3.1 Registers
 
-        Linux system calls (int 0x80)
+Learn 32-bit first (x86), then 64-bit (x86-64).
 
-        Windows API basics (if on Win32)
+32-bit registers
 
-        File I/O in assembly
+General purpose: EAX, EBX, ECX, EDX
 
-    Exercises
+Pointer & index: ESI, EDI, EBP, ESP
 
-        Write a program to read user input and echo it back
+EIP instruction pointer
 
-        Create a file and write text into it
+EFLAGS flags
 
-        Implement a program that counts characters in a file
+64-bit registers (if using x86-64)
 
-Weeks 9–10: Advanced Concepts
+RAX, RBX, … R15
 
-    Topics
+RIP
 
-        Stack frames and function calls
+RFLAGS
 
-        Memory management (heap vs. stack)
+3.2 Memory
 
-        Optimization techniques (loop unrolling, register allocation)
+Addressing modes (direct, indirect, scaled index)
 
-    Exercises
+Stack layout & calling conventions
 
-        Implement recursive factorial with proper stack usage
+Alignment & segmentation
 
-        Write a program that dynamically allocates memory for an array
+Milestone: You can read and predict what a short piece of assembly code does.
+4. Assembly Language Syntax
 
-        Optimize a loop to run faster using registers
+Learn Intel syntax first (more readable), optionally AT&T later.
 
-Weeks 11–12: Specialization
+4.1 Basic Instructions
 
-    Topics
+Data Movement: mov, lea, push, pop
 
-        Reverse engineering basics (disassembly tools: objdump, Ghidra)
+Arithmetic: add, sub, mul, div, inc, dec
 
-        Inline assembly with C/C++
+Logic: and, or, xor, not, shl, shr
 
-        Bootloader basics (optional advanced project)
+Control flow: jmp, cmp, je, jne, jg, jl
 
-    Exercises
+Stack instructions: call, ret
 
-        Disassemble a small C program and analyze the assembly
+4.2 Directives
 
-        Write a C program that calls an assembly function
+NASM: section .text, global _start, db, dw, etc.
+MASM: .data, .code
 
-        Build a simple bootloader that prints text on screen
+Milestone: Write a program that takes console input, processes it, and prints output.
+5. System Calls & OS Interaction
+5.1 Linux (x86 / x86-64) Syscalls
 
-📚 Suggested Resources
+Using int 0x80 (32-bit) or syscall (64-bit):
 
-    Programming from the Ground Up (Linux-focused)
+Examples:
 
-    PC Assembly Language by Paul Carter
+write
 
-    Tools: NASM, GDB, Radare2, Ghidra
+read
+
+open, close
+
+mmap
+
+5.2 Windows Syscalls / WinAPI
+
+Using call to WinAPI functions
+
+Kernel32.dll (e.g., CreateFileA)
+
+Stdcall calling convention
+
+Milestone: You can write assembly programs that interface with the OS filesystem and process input/output.
+6. Functions & Calling Conventions
+
+Learn calling conventions because they are essential for mixing C and assembly.
+
+6.1 x86 32-bit
+
+cdecl
+
+stdcall
+
+fastcall
+
+6.2 x86-64
+
+System V AMD64 ABI (Linux, macOS)
+
+Microsoft x64 calling convention
+
+Know:
+
+Parameter passing (registers/stack)
+
+Return values
+
+Stack frame (prologue & epilogue)
+
+Milestone: Write assembly functions callable from C, and call C functions from assembly.
+7. Advanced Topics
+7.1 Floating Point & Multimedia
+
+x87 FPU instructions
+
+SIMD: SSE, SSE2–SSE4
+
+AVX (if 64-bit)
+
+7.2 Optimization
+
+Loop unrolling
+
+Instruction pipelining
+
+Cache-aware programming
+
+Aligning data
+
+7.3 Memory & Interrupts
+
+BIOS interrupts (real mode)
+
+Hardware interaction
+
+Inline assembly in C/C++
+
+7.4 Reverse Engineering
+
+Use tools: Ghidra, IDA, Radare2
+
+Understand compiler-generated assembly
+
+Milestone: Analyze an executable and reconstruct high-level logic.
+8. Specialization Paths
+
+Choose how you want to use x86 assembly:
+
+Path A — Systems Programming
+
+OS development
+
+Bootloaders
+
+Drivers
+
+Learning real mode, protected mode, paging
+
+Projects:
+
+Build your own bootloader
+
+Write a tiny operating system kernel
+
+Path B — Reverse Engineering / Security
+
+Malware analysis
+
+Writing shellcode
+
+Anti-debugging techniques
+
+Projects:
+
+Crack a simple binary
+
+Write custom shellcode
+
+Path C — High-Performance Optimization
+
+SIMD-heavy code
+
+Scientific computing
+
+Game engine optimization
+
+Projects:
+
+Optimize matrix multiplication
+
+Write a high-speed string library
+
+9. Final Mastery Level
+
+To be an expert:
+
+Read Intel® 64 and IA-32 Manuals (Vol 1–3)
+
+Study compiler assembly output from Clang/GCC/MSVC
+
+Write hybrid C/ASM code
+
+Build a complete x86 emulator/interpreter
+
+Understand the microarchitecture (pipeline stages, uops, reorder buffer)
+
+10. Recommended Resources
+Beginner-Friendly
+
+“Programming From the Ground Up”
+
+“Intel x86 Assembly Language and Architecture”
+
+“PC Assembly Language” by Paul Carter
+
+Intermediate
+
+Intel & AMD official manuals
+
+“Reverse Engineering for Beginners” by Dennis Yurichev
+
+Advanced
+
+Agner Fog’s optimization manuals
+
+AMD64 ABI documentation
