@@ -109,6 +109,7 @@
 - [x86 Assembly Guide](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 - [ARM Developer Documentation](https://developer.arm.com/documentation)
 - [NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+- [LinuxVox](https://linuxvox.com/blog/what-is-the-best-way-to-learn-x86-assembly-on-a-linux-platform/)
 
 ### Practice Platforms
 - Linux system programming
